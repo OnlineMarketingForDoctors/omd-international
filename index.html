@@ -21,8 +21,8 @@
 /* ============================================================
    OMD International
    Palette sampled directly from assets/OMD logo.png
-   Structural vernacular: British hallmarking — punch marks,
-   assay rules, a fineness scale. A trust stamps what it backs.
+   Structural vernacular: assay rules and a fineness scale —
+   five services ordered by how deeply the group gets involved.
 
    Fonts are self-hosted rather than pulled from Google, so no
    visitor IP is handed to a third party on page load.
@@ -63,7 +63,7 @@
   --gutter: clamp(1.25rem, 5vw, 5rem);
   --measure: 64ch;
   --shell: 1180px;
-  --rowgap: clamp(1rem, 2.6vw, 2.2rem); /* punch-to-text gap, shared so headings and rungs align */
+  --rowgap: clamp(1rem, 2.6vw, 2.2rem); /* icon-to-text gap, shared so headings and rungs align */
 
   --band: clamp(4.5rem, 11vh, 8.5rem); /* one place governs section rhythm */
 }
@@ -161,35 +161,30 @@ p:last-child{ margin-bottom:0; }
 
 .muted{ color:var(--slate); }
 
-/* ---------- hallmark punch ---------- */
+/* ---------- icons ----------
+   One drawn set: 24x24 grid, single 1.4 stroke, round caps, no fills.
+   Each service icon restates its depth label, so the mark carries the
+   same information as the word beside it. The box stays 2.9rem so the
+   heading and ladder grids line up exactly as before. */
 
-.punch{
-  position:relative;
+.icon{
   display:inline-grid;
   place-items:center;
   width:2.9rem; height:2.9rem;
   flex:0 0 auto;
-  color:#A88237;
+  color:var(--gold-mid);
   transition:color .45s ease;
 }
-.punch svg{
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  fill:none; stroke:currentColor; stroke-width:1.1;
-  overflow:visible;
-}
-.punch b{
-  font-family:var(--display);
-  font-weight:400;
-  font-size:.9rem;
-  color:var(--gold);
-  letter-spacing:.06em;
-  line-height:1;
-  transform:translateY(.03em);
-  transition:color .45s ease;
+.icon svg{
+  width:1.85rem; height:1.85rem;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
-/* ---------- section heading: punch + title, no caps eyebrow ---------- */
+/* ---------- section heading: icon + title, no caps eyebrow ---------- */
 
 .head{
   display:flex;
@@ -197,7 +192,7 @@ p:last-child{ margin-bottom:0; }
   gap:var(--rowgap);
   margin-bottom:clamp(1.6rem, 4vw, 2.6rem);
 }
-.head .punch{ transform:translateY(.55rem); }
+.head .icon{ transform:translateY(.5rem); }
 .head h2{ flex:1 1 auto; }
 
 /* ============================================================
@@ -453,8 +448,7 @@ p:last-child{ margin-bottom:0; }
   transition:background-color .4s ease;
 }
 .rung:hover{ background:rgba(255,255,255,.014); }
-.rung:hover .punch{ color:var(--gold); }
-.rung:hover .punch b{ color:var(--gold-light); }
+.rung:hover .icon{ color:var(--gold); }
 
 .rung h3{ margin-bottom:.5rem; }
 .rung p{ margin:0; font-size:.95rem; color:var(--slate); max-width:none; }
@@ -568,7 +562,7 @@ p:last-child{ margin-bottom:0; }
   [data-rise], .ready [data-rise]{ opacity:1; transform:none; transition:none; }
   .ladder[data-armed="true"] .depth-fill{ transform:scaleX(1); }
   .ladder.is-drawn .depth-fill{ transition:none; }
-  .btn, .nav a, .punch, .rung, .mailto{ transition:none; }
+  .btn, .nav a, .icon, .rung, .mailto{ transition:none; }
 }
 </style>
 </head>
@@ -631,10 +625,10 @@ p:last-child{ margin-bottom:0; }
     <div class="shell">
 
       <div class="head">
-        <span class="punch" aria-hidden="true">
-          <svg viewBox="0 0 44 44"><path d="M8 6h28a3 3 0 0 1 3 3v26a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3Z"/></svg>
-          <b>I</b>
-        </span>
+        <span class="icon" aria-hidden="true">
+            <!-- group: a trust holding three parties -->
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="8.4" r="1.6"/><circle cx="8.9" cy="14" r="1.6"/><circle cx="15.1" cy="14" r="1.6"/></svg>
+          </span>
         <h2>A trust that operates, rather than only invests.</h2>
       </div>
 
@@ -676,10 +670,10 @@ p:last-child{ margin-bottom:0; }
     <div class="shell">
 
       <div class="head" style="margin-bottom:0">
-        <span class="punch" aria-hidden="true">
-          <svg viewBox="0 0 44 44"><path d="M8 6h28a3 3 0 0 1 3 3v26a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3Z"/></svg>
-          <b>II</b>
-        </span>
+        <span class="icon" aria-hidden="true">
+            <!-- depth: three rules of increasing length -->
+            <svg viewBox="0 0 24 24"><path d="M4 7h5.5M4 12h10.5M4 17h16"/></svg>
+          </span>
         <h2>Five ways in, ordered by depth.</h2>
       </div>
 
@@ -690,9 +684,9 @@ p:last-child{ margin-bottom:0; }
       <ol class="ladder" id="ladder">
 
         <li class="rung">
-          <span class="punch" aria-hidden="true">
-            <svg viewBox="0 0 44 44"><path d="M9 8h26v18c0 7-6.5 10.5-13 13-6.5-2.5-13-6-13-13Z"/></svg>
-            <b>I</b>
+          <span class="icon" aria-hidden="true">
+            <!-- demand: a funnel -->
+            <svg viewBox="0 0 24 24"><path d="M4.2 5.4h15.6l-5.9 7v6.4l-3.8 2.1v-8.5Z"/></svg>
           </span>
           <div>
             <h3>Digital marketing</h3>
@@ -709,9 +703,9 @@ p:last-child{ margin-bottom:0; }
         </li>
 
         <li class="rung">
-          <span class="punch" aria-hidden="true">
-            <svg viewBox="0 0 44 44"><path d="M22 5 37 13.5v17L22 39 7 30.5v-17Z"/></svg>
-            <b>II</b>
+          <span class="icon" aria-hidden="true">
+            <!-- systems: code brackets -->
+            <svg viewBox="0 0 24 24"><path d="M9 7.5 4.2 12.3 9 17.1M15 7.5l4.8 4.8L15 17.1"/></svg>
           </span>
           <div>
             <h3>AI &amp; custom apps</h3>
@@ -728,9 +722,9 @@ p:last-child{ margin-bottom:0; }
         </li>
 
         <li class="rung">
-          <span class="punch" aria-hidden="true">
-            <svg viewBox="0 0 44 44"><ellipse cx="22" cy="22" rx="17" ry="15"/></svg>
-            <b>III</b>
+          <span class="icon" aria-hidden="true">
+            <!-- capability: a conversation -->
+            <svg viewBox="0 0 24 24"><rect x="3.8" y="5.4" width="16.4" height="11.2" rx="2.4"/><path d="M8.9 16.6 8 20.2l4.4-3.6"/></svg>
           </span>
           <div>
             <h3>Agency coaching</h3>
@@ -747,9 +741,9 @@ p:last-child{ margin-bottom:0; }
         </li>
 
         <li class="rung">
-          <span class="punch" aria-hidden="true">
-            <svg viewBox="0 0 44 44"><path d="M15 6h14l9 9v14l-9 9H15l-9-9V15Z"/></svg>
-            <b>IV</b>
+          <span class="icon" aria-hidden="true">
+            <!-- direction: a compass needle -->
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><path d="M15.4 8.6 13.7 13.7 8.6 15.4 10.3 10.3Z"/></svg>
           </span>
           <div>
             <h3>Business consulting</h3>
@@ -766,9 +760,9 @@ p:last-child{ margin-bottom:0; }
         </li>
 
         <li class="rung">
-          <span class="punch" aria-hidden="true">
-            <svg viewBox="0 0 44 44"><path d="M22 4 34 8l4 12-4 12-12 4-12-4-4-12L10 8Z"/></svg>
-            <b>V</b>
+          <span class="icon" aria-hidden="true">
+            <!-- ownership: a share of the whole -->
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><path d="M12 3.8V12h8.2"/></svg>
           </span>
           <div>
             <h3>Private equity</h3>
@@ -793,10 +787,10 @@ p:last-child{ margin-bottom:0; }
     <div class="shell">
 
       <div class="head">
-        <span class="punch" aria-hidden="true">
-          <svg viewBox="0 0 44 44"><path d="M8 6h28a3 3 0 0 1 3 3v26a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3Z"/></svg>
-          <b>III</b>
-        </span>
+        <span class="icon" aria-hidden="true">
+            <!-- people -->
+            <svg viewBox="0 0 24 24"><circle cx="9.2" cy="9.4" r="2.7"/><path d="M4 19c0-2.9 2.3-5.2 5.2-5.2S14.4 16.1 14.4 19"/><circle cx="16.8" cy="10.6" r="2"/><path d="M15.6 14.2c2.6-.2 4.6 1.9 4.6 4.8"/></svg>
+          </span>
         <h2>Small, senior, and on the account.</h2>
       </div>
 
@@ -834,10 +828,10 @@ p:last-child{ margin-bottom:0; }
   <section class="close band" id="contact">
     <div class="shell">
       <div class="head">
-        <span class="punch" aria-hidden="true">
-          <svg viewBox="0 0 44 44"><path d="M8 6h28a3 3 0 0 1 3 3v26a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3Z"/></svg>
-          <b>IV</b>
-        </span>
+        <span class="icon" aria-hidden="true">
+            <!-- contact: an envelope -->
+            <svg viewBox="0 0 24 24"><rect x="3.6" y="6" width="16.8" height="12" rx="1.8"/><path d="M4.4 7.4 12 12.8l7.6-5.4"/></svg>
+          </span>
         <h2>Tell us where the business is stuck.</h2>
       </div>
 
