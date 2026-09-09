@@ -10,10 +10,10 @@ repository root.
 | --- | --- |
 | `index.html` | The whole site. Styles and script are inline, so there is one file to edit. |
 | `assets/omd-logo.png` | Wordmark, cropped and keyed to transparency from the source logo. |
-| `assets/omd-team.jpg` | Team portrait, restyled to the brand palette. |
+| `assets/omd-team.webp` | Team portrait supplied by the client. |
 | `assets/omd-boardroom.jpg` | Boardroom band used in the group section. |
 | `assets/fonts/` | Self-hosted Marcellus and Archivo (latin subset). |
-| `assets/OMD logo.png`, `assets/OMD team.png` | Original source files, kept for reference. |
+| `assets/OMD logo.png`, `assets/OMD team.png`, `assets/team photo.webp` | Original source files, kept for reference. |
 
 ## Design notes
 
