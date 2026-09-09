@@ -286,8 +286,39 @@ p:last-child{ margin-bottom:0; }
   isolation:isolate;
 }
 
-#seam{
+/* An engraver's rule: fine minor cells with a heavier line every fourth,
+   the ruled ground a hallmark gets struck into. It sits under the seam,
+   so the canvas's screen blend lets the gold light the rules as it passes. */
+.hero-grid{
+  --cell:  84px;
+  --minor: rgba(232,227,216,.034);
+  --major: rgba(221,177,87,.080);
   position:absolute; inset:0; z-index:0;
+  pointer-events:none;
+  background-image:
+    repeating-linear-gradient(to right,  var(--major) 0 1px, transparent 1px calc(var(--cell) * 4)),
+    repeating-linear-gradient(to bottom, var(--major) 0 1px, transparent 1px calc(var(--cell) * 4)),
+    repeating-linear-gradient(to right,  var(--minor) 0 1px, transparent 1px var(--cell)),
+    repeating-linear-gradient(to bottom, var(--minor) 0 1px, transparent 1px var(--cell));
+  /* strongest around the seam, gone by the edges, so it reads as a ground
+     rather than a tiled texture running off the page */
+  -webkit-mask-image:radial-gradient(105% 95% at 64% 44%, #000 18%, rgba(0,0,0,.45) 55%, transparent 84%);
+          mask-image:radial-gradient(105% 95% at 64% 44%, #000 18%, rgba(0,0,0,.45) 55%, transparent 84%);
+}
+@media (max-width:900px){
+  /* the narrow-screen scrim is a flat wash rather than a left-weighted one,
+     so the rules need more weight to survive it */
+  .hero-grid{
+    --cell:  54px;
+    --minor: rgba(232,227,216,.062);
+    --major: rgba(221,177,87,.135);
+    -webkit-mask-image:radial-gradient(125% 85% at 50% 42%, #000 20%, rgba(0,0,0,.5) 58%, transparent 90%);
+            mask-image:radial-gradient(125% 85% at 50% 42%, #000 20%, rgba(0,0,0,.5) 58%, transparent 90%);
+  }
+}
+
+#seam{
+  position:absolute; inset:0; z-index:1;
   width:100%; height:100%;
   pointer-events:none;
   opacity:.92;
@@ -300,7 +331,7 @@ p:last-child{ margin-bottom:0; }
 /* legibility scrim over the copy; kept off the seam itself */
 .hero::before{
   content:"";
-  position:absolute; inset:0; z-index:1;
+  position:absolute; inset:0; z-index:2;
   pointer-events:none;
   background:
     radial-gradient(115% 85% at 4% 52%, rgba(20,20,20,.92) 0%, rgba(20,20,20,.66) 32%, rgba(20,20,20,0) 62%),
@@ -317,12 +348,12 @@ p:last-child{ margin-bottom:0; }
 /* floor fade into the next section */
 .hero::after{
   content:"";
-  position:absolute; left:0; right:0; bottom:0; height:26vh; z-index:1;
+  position:absolute; left:0; right:0; bottom:0; height:26vh; z-index:2;
   pointer-events:none;
   background:linear-gradient(to bottom, rgba(31,31,31,0), var(--graphite) 92%);
 }
 
-.hero .shell{ position:relative; z-index:2; padding-block:8.5rem 5rem; }
+.hero .shell{ position:relative; z-index:3; padding-block:8.5rem 5rem; }
 
 .hero-copy{ max-width:min(54rem, 100%); }
 
@@ -399,13 +430,6 @@ p:last-child{ margin-bottom:0; }
   overflow:hidden;
 }
 .plate img{ width:100%; }
-.plate figcaption{
-  position:absolute; left:0; right:0; bottom:0;
-  padding:clamp(1rem,3vw,1.6rem) clamp(1.1rem,3vw,1.9rem);
-  font-size:.82rem;
-  color:var(--slate);
-  background:linear-gradient(to top, rgba(18,18,18,.94), rgba(18,18,18,0));
-}
 
 /* ============================================================
    THE LADDER — five depths of involvement
@@ -585,6 +609,7 @@ p:last-child{ margin-bottom:0; }
 
   <!-- ===================== HERO ===================== -->
   <section class="hero" id="top">
+    <div class="hero-grid" aria-hidden="true"></div>
     <canvas id="seam" aria-hidden="true"></canvas>
 
     <div class="shell">
@@ -654,7 +679,6 @@ p:last-child{ margin-bottom:0; }
 
       <figure class="plate">
         <img src="assets/omd-boardroom.jpg" alt="An empty boardroom at night, lit by a single warm pendant, with the London skyline beyond the glass." width="2200" height="933" loading="lazy" decoding="async">
-        <figcaption>Decisions get made in rooms like this one. We would rather be in it than presenting to it.</figcaption>
       </figure>
 
     </div>
