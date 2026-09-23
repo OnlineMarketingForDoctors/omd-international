@@ -48,7 +48,7 @@ a standard disclosure button with `aria-expanded` and closes on Escape.
 
 ## Placeholder content to confirm
 
-- `hello@omdinternational.com` is a stand-in address.
+- `contactus@omd-international.com` is the contact address.
 - Office cities under "The people" are assumed from the group's stated reach.
 - Copy describes capability in general terms and makes no numeric claims, so it
   needs a read-through before launch rather than fact-checking.
