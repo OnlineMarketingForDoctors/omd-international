@@ -215,16 +215,21 @@ td:first-child{ color:var(--bone); white-space:nowrap; padding-right:1.6rem; }
 /* ---------- footer ---------- */
 
 .foot{ border-top:1px solid var(--rule-soft); }
-.foot .shell{
+.foot .shell{ padding-block:2.5rem; }
+.foot-brand{
   display:flex; flex-wrap:wrap; gap:1.4rem 2.5rem;
   align-items:center; justify-content:space-between;
-  padding-block:2.5rem;
+}
+.foot-meta{
+  display:flex; flex-wrap:wrap; gap:.7rem 2rem;
+  align-items:baseline; justify-content:space-between;
+  margin-top:1.6rem; padding-top:1.4rem;
+  border-top:1px solid var(--rule-soft);
 }
 .foot img{ height:1.6rem; width:auto; opacity:.85; }
-.foot p{ margin:0; font-size:.82rem; color:var(--slate-dim); }
-.foot .legal{ color:var(--bone); }
-.foot a{ border:0; color:var(--slate-dim); }
-.foot a:hover{ color:var(--bone); }
+.foot p{ margin:0; font-size:.82rem; color:var(--slate-dim); max-width:none; }
+.foot .legal{ color:var(--bone); }   /* 12.9:1 — the line people actually need to read */
+.foot .meta span{ color:var(--rule); padding-inline:.3rem; }  /* separators recede behind the values */
 </style>
 </head>
 <body>
@@ -536,9 +541,14 @@ td:first-child{ color:var(--bone); white-space:nowrap; padding-right:1.6rem; }
 
 <footer class="foot">
   <div class="shell">
-    <img src="assets/omd-logo.png" alt="OMD International" width="767" height="294" loading="lazy">
-    <p class="legal">OMD International is part of Blue Ocean Business Trust. Registered in the United Kingdom &amp; Australia.</p>
-    <p>&copy; <span id="year">2026</span> OMD International. All rights reserved.</p>
+    <div class="foot-brand">
+      <img src="assets/omd-logo.png" alt="OMD International" width="767" height="294" loading="lazy">
+      <p class="legal">OMD International is part of Blue Ocean Business Trust. Registered in the United Kingdom &amp; Australia.</p>
+    </div>
+    <div class="foot-meta">
+      <p class="meta">ABN: 73 702 423 167 <span>|</span> ACN: 702 423 167 <span>|</span> All Rights Reserved <span>|</span> Sitemap <span>|</span> Privacy Policy <span>|</span> Disclaimer</p>
+      <p>&copy; <span id="year">2026</span> OMD International.</p>
+    </div>
   </div>
 </footer>
 
